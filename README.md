@@ -1,4 +1,4 @@
-# Project 1 - Fangting Ma
+# Project 2 - Fangting Ma
 
 ## INTRODUCTION
 
