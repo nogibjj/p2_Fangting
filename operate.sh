@@ -2,10 +2,11 @@
 lines=$(wc -l < $1)
 echo "The dataset" $1 "has" $lines "rows of data."
 
-LINE=1
-
-while read -r CURRENT_LINE
-	do
-		echo "$LINE: $CURRENT_LINE"
-    ((LINE++))
-done < $1
+sorted=$(tail -n+2 $1 | sort -t, -k5n,5 -k1n,1 > output.csv)
+while IFS=, read -r col1 col2 col3 col4 col5 col6
+do
+    if [ $col4 ] && [ $col5 ] && [ $col5 -gt 50 ] && [ $col5 -lt 60 ] 
+    then
+        echo "$col2": "$col3"
+    fi
+done < output.csv > output.txt
